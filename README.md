@@ -49,14 +49,11 @@ pip install -r requirements.txt
 ```
 
 3. Download the dataset from ISIC 2024 (SLICE-3D Permissive)
+   - TRAINING IMAGES AND INPUT ATTRIBUTES
+   - TRAINING SUPPLEMENT
+   - TRAINING GROUND TRUTH
 
-   -TRAINING IMAGES AND INPUT ATTRIBUTES
-   -TRAINING SUPPLEMENT
-   -TRAINING GROUND TRUTH
-
-4. Place all in
-
-data/
+4. Place all in a folder named: data/
 
 5. Run the notebook
 
