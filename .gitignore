@@ -5,3 +5,4 @@ ISIC_2024_Permissive_Training_Input/
 *.png
 __pycache__/
 .ipynb_checkpoints/
+Additionals/
