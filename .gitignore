@@ -2,7 +2,20 @@ data/
 ISIC_2024_Permissive_Training_Input/
 *.zip
 *.jpg
-*.png
 __pycache__/
 .ipynb_checkpoints/
 Additionals/
+
+# Model weights (too large for GitHub)
+*.pth
+
+# Draft notebooks and scripts
+01_baseline_cnn.ipynb
+02_final_project.ipynb
+diagnostico.py
+test_resnet_train.py
+project_scope.md
+precision_recall_curves.png
+
+# Claude
+.claude/
