@@ -19,3 +19,12 @@ precision_recall_curves.png
 
 # Claude
 .claude/
+
+# Compiled Java binaries
+*.class
+*.jar
+
+# Binary/media assets
+*.pdf
+*.docx
+*.png
