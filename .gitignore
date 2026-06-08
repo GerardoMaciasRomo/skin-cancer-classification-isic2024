@@ -17,8 +17,6 @@ test_resnet_train.py
 project_scope.md
 precision_recall_curves.png
 
-# Claude
-.claude/
 
 # Compiled Java binaries
 *.class
