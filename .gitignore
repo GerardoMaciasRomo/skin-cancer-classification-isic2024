@@ -23,8 +23,4 @@ precision_recall_curves.png
 # Compiled Java binaries
 *.class
 *.jar
-
-# Binary/media assets
-*.pdf
 *.docx
-*.png
