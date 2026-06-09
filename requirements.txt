@@ -1,3 +1,5 @@
+# Environment for ISIC 2024 skin cancer classification
+
 torch==2.7.1
 torchvision==0.22.1
 numpy>=1.24.0
