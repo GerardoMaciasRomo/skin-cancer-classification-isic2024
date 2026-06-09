@@ -12,11 +12,11 @@ Skin cancer is one of the most prevalent cancers worldwide. Early detection thro
 
 ## Models Compared
 
-| Model | Type | Parameters | Test AUC-ROC |
-|-------|------|------------|-------------|
-| ResNet-50 | Residual CNN | 25.6 M | ~0.89 |
-| EfficientNetV2-S | NAS-designed CNN | 21.5 M | ~0.92 |
-| ViT-B/16 | Vision Transformer | 86.6 M | ~0.91 |
+| Model            | Type               | Parameters | Test AUC-ROC |
+| ---------------- | ------------------ | ---------- | ------------ |
+| ResNet-50        | Residual CNN       | 25.6 M     | ~0.76        |
+| EfficientNetV2-S | NAS-designed CNN   | 21.5 M     | ~0.87        |
+| ViT-B/16         | Vision Transformer | 86.6 M     | ~0.84        |
 
 All models are **fine-tuned** from ImageNet-pretrained weights with differential learning rates.
 
@@ -28,7 +28,7 @@ All models are **fine-tuned** from ImageNet-pretrained weights with differential
 
 ## Class Imbalance Strategy
 
-1. **Subset sampling** --- Keep all malignant samples + random benign subset
+1. **Full dataset training** --- Use all 217K images
 2. **WeightedRandomSampler** --- Balanced mini-batches (~50/50)
 3. **Cost-sensitive loss** --- `BCEWithLogitsLoss(pos_weight=~49)`
 
@@ -39,33 +39,14 @@ All models are **fine-tuned** from ImageNet-pretrained weights with differential
 - **NaN protection** --- `torch.nan_to_num()` on logits during evaluation
 - **Differential learning rates** --- Backbone: 1e-4, Head: 1e-3
 
-## Results
-
-<p align="center">
-  <img src="learning_curves.png" width="100%" alt="Learning Curves">
-</p>
-
-<p align="center">
-  <img src="roc_curves.png" width="48%" alt="ROC Curves">
-  <img src="pr_curves.png" width="48%" alt="PR Curves">
-</p>
-
-<p align="center">
-  <img src="confusion_matrices.png" width="100%" alt="Confusion Matrices">
-</p>
-
 ## Repository Structure
 
 ```
 .
 ├── 03_final_complete.ipynb   # Complete project notebook (EDA + Training + Evaluation)
-├── paper.tex                 # LaTeX paper
 ├── requirements.txt          # Python dependencies
 ├── README.md
-├── learning_curves.png       # Training visualization
-├── roc_curves.png            # ROC curves (test set)
-├── pr_curves.png             # Precision-Recall curves (test set)
-└── confusion_matrices.png    # Confusion matrices (test set)
+
 ```
 
 ## How to Run
@@ -73,8 +54,8 @@ All models are **fine-tuned** from ImageNet-pretrained weights with differential
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/skin-cancer-classification.git
-cd skin-cancer-classification
+git clone https://github.com/GerardoMaciasRomo/skin-cancer-classification-isic2024.git
+cd skin-cancer-classification-isic2024
 ```
 
 ### 2. Create a conda environment
@@ -90,10 +71,12 @@ pip install -r requirements.txt
 ### 3. Download the dataset
 
 Download from the [ISIC 2024 Challenge](https://challenge.isic-archive.com/):
+
 - Training Images (SLICE-3D Permissive)
 - Training Ground Truth
 
 Place files in `data/`:
+
 ```
 data/
 ├── ISIC_2024_Permissive_Training_GroundTruth.csv
@@ -110,15 +93,15 @@ data/
 jupyter notebook 03_final_complete.ipynb
 ```
 
-Select the `melanoma_env` kernel and run all cells. Training takes ~51 minutes on an RTX 3070.
+Select the `melanoma_env` kernel and run all cells. Training takes ~28 hours on an RTX 3070.
 
 ## Environment
 
-| Component | Version |
-|-----------|---------|
-| Python | 3.10 |
-| PyTorch | 2.7.1 + CUDA 11.8 |
-| GPU | NVIDIA RTX 3070 Laptop (8 GB VRAM) |
+| Component | Version                            |
+| --------- | ---------------------------------- |
+| Python    | 3.10                               |
+| PyTorch   | 2.7.1 + CUDA 11.8                  |
+| GPU       | NVIDIA RTX 3070 Laptop (8 GB VRAM) |
 
 ## Author
 
